@@ -1,0 +1,28 @@
+apply from: '../commonModule.gradle'
+apply from: '../commonKaptModule.gradle'
+apply from: '../unitTestConfiguration.gradle'
+
+dependencies {
+    api project(":base")
+
+    //debug
+
+    implementation project(":i-network")
+    implementation project(":i-token")
+    implementation project(":i-initialization")
+    implementation project(":i-session")
+
+    api rxBinding4.core
+    api rxBinding4.material
+
+    api(firebase.crashlytics) {
+        transitive = true
+    }
+
+    implementation debug.anrWatchDog
+    implementation debug.timber
+    implementation debug.rxJava2Debug
+
+    implementation test.kotest
+    implementation test.mockk
+}

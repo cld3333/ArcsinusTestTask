@@ -1,0 +1,14 @@
+.idea/*
+!.idea/codeStyles
+!.idea/inspectionProfile
+*.iml
+.gradle
+/local.properties
+/android-standard/androidStandard.properties
+.DS_Store
+/build
+*/build
+/captures
+.externalNativeBuild
+/temp
+_mirror
