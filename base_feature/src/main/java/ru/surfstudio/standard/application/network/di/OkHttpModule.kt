@@ -1,7 +1,6 @@
 package ru.surfstudio.standard.application.network.di
 
 import ru.surfstudio.standard.i_network.service.ServiceInterceptor
-import ru.surfstudio.standard.i_token.TokenStorage
 import dagger.Module
 import dagger.Provides
 import okhttp3.Interceptor
@@ -25,8 +24,8 @@ class OkHttpModule {
     @Provides
     @PerApplication
     @Named(DI_NAME_SERVICE_INTERCEPTOR)
-    internal fun provideServiceInterceptor(tokenStorage: TokenStorage): Interceptor {
-        return ServiceInterceptor(tokenStorage)
+    internal fun provideServiceInterceptor(): Interceptor {
+        return ServiceInterceptor()
     }
 
     @Provides

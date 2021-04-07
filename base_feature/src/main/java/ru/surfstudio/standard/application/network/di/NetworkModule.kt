@@ -19,7 +19,6 @@ import ru.surfstudio.standard.i_network.network.calladapter.BaseCallAdapterFacto
 import ru.surfstudio.android.template.base_feature.BuildConfig
 import ru.surfstudio.standard.i_network.network.CallAdapterFactory
 import ru.surfstudio.standard.i_network.BASE_API_URL
-import ru.surfstudio.standard.i_network.TEST_API_URL
 
 @Module
 class NetworkModule {

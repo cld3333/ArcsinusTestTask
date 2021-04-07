@@ -1,6 +1,5 @@
 package ru.surfstudio.standard.i_network.service
 
-import ru.surfstudio.standard.i_token.TokenStorage
 import okhttp3.Interceptor
 import okhttp3.Response
 import ru.surfstudio.android.dagger.scope.PerApplication
@@ -13,7 +12,7 @@ const val HEADER_AUTH_KEY = "Bearer"
  * добавляет необходимые для каждого запроса параметры, такие как token
  */
 @PerApplication
-class ServiceInterceptor @Inject constructor(private val tokenStorage: TokenStorage) : Interceptor {
+class ServiceInterceptor @Inject constructor() : Interceptor {
 
     @Throws(IOException::class)
     override fun intercept(chain: Interceptor.Chain): Response {
@@ -24,7 +23,6 @@ class ServiceInterceptor @Inject constructor(private val tokenStorage: TokenStor
         }
 
         val headersBuilder = originalRequest.headers.newBuilder()
-                .add(HEADER_AUTH_KEY, tokenStorage.token)
 
         val request = originalRequest.newBuilder()
                 .headers(headersBuilder.build())

@@ -14,7 +14,6 @@ import ru.surfstudio.android.rx.extension.scheduler.SchedulersProvider
 import ru.surfstudio.android.shared.pref.NO_BACKUP_SHARED_PREF
 import ru.surfstudio.android.core.ui.provider.resource.ResourceProvider
 import ru.surfstudio.standard.i_initialization.InitializeAppInteractor
-import ru.surfstudio.standard.i_session.SessionChangedInteractor
 import ru.surfstudio.standard.ui.mvi.navigation.IntentChecker
 import javax.inject.Named
 
@@ -28,7 +27,6 @@ interface AppProxyDependencies {
     fun context(): Context
     fun activeActivityHolder(): ActiveActivityHolder
     fun connectionProvider(): ConnectionProvider
-    fun sessionChangedInteractor(): SessionChangedInteractor
     fun schedulerProvider(): SchedulersProvider
     fun resourceProvider(): ResourceProvider
     fun globalNavigator(): GlobalNavigator
