@@ -7,6 +7,7 @@ import ru.surfstudio.android.dagger.scope.PerScreen
 import ru.surfstudio.android.navigation.observer.ScreenResultObserver
 import ru.surfstudio.android.navigation.rx.extension.observeScreenResult
 import ru.surfstudio.android.rx.extension.toObservable
+import ru.surfstudio.standard.characters.CharactersCache
 import ru.surfstudio.standard.f_characters.history.HistoryEvent.*
 import ru.surfstudio.standard.ui.dialog.base.SimpleResult
 import ru.surfstudio.standard.ui.dialog.simple.SimpleDialogRoute
@@ -17,39 +18,15 @@ import javax.inject.Inject
 @PerScreen
 internal class HistoryMiddleware @Inject constructor(
         basePresenterDependency: BaseMiddlewareDependency,
-        private val screenResultObserver: ScreenResultObserver,
-        private val navigationMiddleware: NavigationMiddleware
+        private val navigationMiddleware: NavigationMiddleware,
+        private val charactersCache: CharactersCache
 ) : BaseMiddleware<HistoryEvent>(basePresenterDependency) {
 
     override fun transform(eventStream: Observable<HistoryEvent>): Observable<out HistoryEvent> = transformations(eventStream) {
         addAll(
-            Navigation::class decomposeTo navigationMiddleware,
-            OpenDialog::class eventMapTo { showDialog() },
-            observeDialogResult()
+                onCreate() map { ShowCharacters(charactersCache.all) },
+                Navigation::class decomposeTo navigationMiddleware,
         )
     }
 
-    private fun showDialog(): Observable<out HistoryEvent> =
-            Navigation().show(createDialogRoute()).toObservable()
-
-    private fun observeDialogResult(): Observable<out HistoryEvent> {
-        return screenResultObserver
-                .observeScreenResult(createDialogRoute())
-                .map {
-                    ShowDialogResult(
-                            if (it == SimpleResult.POSITIVE) {
-                                "ok tapped"
-                            } else {
-                                "cancel tapped"
-                            }
-                    )
-                }
-    }
-
-    private fun createDialogRoute() =
-            SimpleDialogRoute(
-                    dialogId = "simple_dialog",
-                    message = "Quick brown fox jumps over the lazy dog",
-                    title = "Simple dialog"
-            )
 }

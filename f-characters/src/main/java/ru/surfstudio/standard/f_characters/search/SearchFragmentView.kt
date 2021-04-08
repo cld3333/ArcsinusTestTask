@@ -54,7 +54,8 @@ internal class SearchFragmentView : BaseMviFragmentView<SearchState, SearchEvent
 
     override fun bind() {
         super.bind()
-        initViews()
+
+        binding.serachEt.setOnTextChanged { Input.SearchCharacterEvent(it).emit() }
     }
 
     override fun render(state: SearchState) {
@@ -74,7 +75,6 @@ internal class SearchFragmentView : BaseMviFragmentView<SearchState, SearchEvent
 
     override fun initViews() {
         binding.charactersRv.adapter = easyAdapter
-        binding.serachEt.setOnTextChanged { Input.SearchCharacterEvent(it).emit() }
     }
 
     private fun renderCharacters(state: SearchState) {

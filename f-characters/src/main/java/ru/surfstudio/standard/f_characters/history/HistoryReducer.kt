@@ -5,10 +5,11 @@ import ru.surfstudio.android.core.mvi.impls.ui.reducer.BaseReducer
 import ru.surfstudio.android.core.mvp.binding.rx.relation.mvp.State
 import ru.surfstudio.android.dagger.scope.PerScreen
 import ru.surfstudio.android.utilktx.ktx.text.EMPTY_STRING
+import ru.surfstudio.standard.domain.characters.Character
 import javax.inject.Inject
 
 internal data class HistoryState(
-        val message: String = EMPTY_STRING
+        val characters: List<Character> = emptyList()
 )
 
 /**
@@ -26,12 +27,9 @@ internal class HistoryReducer @Inject constructor(
         dependency: BaseReactorDependency
 ) : BaseReducer<HistoryEvent, HistoryState>(dependency) {
 
-    override fun reduce(state: HistoryState, event: HistoryEvent): HistoryState {
-        return when (event) {
-            is HistoryEvent.ShowDialogResult -> {
-                state.copy(message = event.message)
+    override fun reduce(state: HistoryState, event: HistoryEvent): HistoryState =
+            when (event) {
+                is HistoryEvent.ShowCharacters -> state.copy(characters = event.characters)
+                else -> state
             }
-            else -> state
-        }
-    }
 }
