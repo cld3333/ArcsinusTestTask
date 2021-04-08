@@ -9,7 +9,9 @@ android {
 
     buildTypes {
         qa {
-            buildConfigField "String", "BASE_URL", '""'
+            buildConfigField "String", "BASE_URL", '"https://gateway.marvel.com:443/v1/public/"'
+            buildConfigField "String", "MARVEL_API_PUBLIC_KEY", '"26822b503859b2a45b2465a0d690a4e0"'
+            buildConfigField "String", "MARVEL_API_PRIVATE_KEY", '"02ad1716b174a8817a510d7282303ae20d5c2278"'
             multiDexEnabled true
             minifyEnabled true
             debuggable = true
@@ -18,13 +20,17 @@ android {
         }
 
         debug {
-            buildConfigField "String", "BASE_URL", '""'
+            buildConfigField "String", "BASE_URL", '"https://gateway.marvel.com:443/v1/public/"'
+            buildConfigField "String", "MARVEL_API_PUBLIC_KEY", '"26822b503859b2a45b2465a0d690a4e0"'
+            buildConfigField "String", "MARVEL_API_PRIVATE_KEY", '"02ad1716b174a8817a510d7282303ae20d5c2278"'
             multiDexEnabled true
             debuggable = true
         }
 
         release {
-            buildConfigField "String", "BASE_URL", '""'
+            buildConfigField "String", "BASE_URL", '"https://gateway.marvel.com:443/v1/public/"'
+            buildConfigField "String", "MARVEL_API_PUBLIC_KEY", '"26822b503859b2a45b2465a0d690a4e0"'
+            buildConfigField "String", "MARVEL_API_PRIVATE_KEY", '"02ad1716b174a8817a510d7282303ae20d5c2278"'
             minifyEnabled true
         }
     }

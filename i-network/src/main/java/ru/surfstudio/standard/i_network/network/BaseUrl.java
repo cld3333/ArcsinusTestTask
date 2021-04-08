@@ -30,7 +30,7 @@ public class BaseUrl {
     private String apiVersion;
 
     public BaseUrl(@NonNull String base, @Nullable String apiVersion) {
-        this.base = base.replaceFirst(END_SLASH, "");
+        this.base = base;
         if (apiVersion != null) {
             this.apiVersion = apiVersion.replaceFirst(START_SLASH, "")
                     .replaceFirst(END_SLASH, "");

@@ -3,6 +3,7 @@ package ru.surfstudio.standard.application.app.di
 import dagger.Component
 import ru.surfstudio.android.dagger.scope.PerApplication
 import ru.surfstudio.standard.application.cache.di.CacheModule
+import ru.surfstudio.standard.application.characters.di.CharactersModule
 import ru.surfstudio.standard.application.migration.di.MigrationModule
 import ru.surfstudio.standard.application.network.di.EtagModule
 import ru.surfstudio.standard.application.network.di.NetworkModule
@@ -18,6 +19,7 @@ import ru.surfstudio.standard.ui.navigation.di.NavigationModule
     MigrationModule::class,
     SharedPrefModule::class,
     CacheModule::class,
+    CharactersModule::class,
     EtagModule::class,
     NetworkModule::class,
     OkHttpModule::class,

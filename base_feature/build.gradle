@@ -9,6 +9,7 @@ dependencies {
 
     implementation project(":i-network")
     implementation project(":i-initialization")
+    implementation project(":i-characters")
 
     api rxBinding4.core
     api rxBinding4.material
