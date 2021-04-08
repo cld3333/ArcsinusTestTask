@@ -1,18 +1,14 @@
-package ru.surfstudio.standard.f_search.controllers
+package ru.surfstudio.standard.f_search.search.controllers
 
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import ru.surfstudio.android.easyadapter.controller.BindableItemController
 import ru.surfstudio.android.easyadapter.holder.BindableViewHolder
-import ru.surfstudio.android.easyadapter.pagination.EasyPaginationAdapter
 import ru.surfstudio.android.imageloader.ImageLoader
 import ru.surfstudio.standard.domain.characters.Character
 import ru.surfstudio.standard.f_search.R
 
-/**
- * Контроллер списка сотрудников
- */
 class CharacterController() :
         BindableItemController<Character, CharacterController.Holder>() {
 

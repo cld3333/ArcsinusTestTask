@@ -5,7 +5,6 @@ import ru.surfstudio.android.navigation.route.tab.TabHeadRoute
 
 class HistoryFragmentRoute : FragmentRoute(), TabHeadRoute {
 
-    override fun getScreenClassPath(): String {
-        return "ru.surfstudio.standard.f_history.HistoryFragmentView"
-    }
+    override fun getScreenClassPath(): String =
+            "ru.surfstudio.standard.f_search.history.HistoryFragmentView"
 }

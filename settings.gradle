@@ -9,8 +9,7 @@ include ":app",
         ":f-main",
         ":f-splash",
         ":f-search",
-        ':i-characters',
-        ":f-history"
+        ':i-characters'
 
 apply from: 'android-standard/androidStandardSettings.gradle'
 apply from: 'buildCache.gradle'

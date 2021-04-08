@@ -1,13 +1,13 @@
-package ru.surfstudio.standard.f_search
+package ru.surfstudio.standard.f_search.search
 
 import io.reactivex.Observable
 import ru.surfstudio.android.core.mvi.impls.ui.middleware.BaseMiddleware
 import ru.surfstudio.android.core.mvi.impls.ui.middleware.BaseMiddlewareDependency
 import ru.surfstudio.android.dagger.scope.PerScreen
 import ru.surfstudio.standard.characters.CharactersInteractor
-import ru.surfstudio.standard.f_search.SearchEvent.*
-import ru.surfstudio.standard.f_search.SearchEvent.CharactersLoad.FirsLoading
-import ru.surfstudio.standard.f_search.SearchEvent.CharactersLoad.LoadMore
+import ru.surfstudio.standard.f_search.search.SearchEvent.*
+import ru.surfstudio.standard.f_search.search.SearchEvent.CharactersLoad.FirsLoading
+import ru.surfstudio.standard.f_search.search.SearchEvent.CharactersLoad.LoadMore
 import ru.surfstudio.standard.ui.mvi.navigation.base.NavigationMiddleware
 import javax.inject.Inject
 

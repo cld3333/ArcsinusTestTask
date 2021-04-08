@@ -1,4 +1,4 @@
-package ru.surfstudio.standard.f_history.di
+package ru.surfstudio.standard.f_search.search.di
 
 import android.os.Bundle
 import dagger.Component
@@ -11,42 +11,42 @@ import ru.surfstudio.android.core.mvi.impls.ui.binder.ScreenBinderDependency
 import ru.surfstudio.android.core.mvp.configurator.BindableScreenComponent
 import ru.surfstudio.android.core.mvp.configurator.ScreenComponent
 import ru.surfstudio.android.dagger.scope.PerScreen
-import ru.surfstudio.standard.f_history.*
+import ru.surfstudio.standard.f_search.search.*
 import ru.surfstudio.standard.ui.activity.di.ActivityComponent
 import ru.surfstudio.standard.ui.activity.di.FragmentScreenConfigurator
-import ru.surfstudio.standard.ui.navigation.routes.HistoryFragmentRoute
+import ru.surfstudio.standard.ui.navigation.routes.SearchFragmentRoute
 import ru.surfstudio.standard.ui.screen_modules.CustomScreenModule
 import ru.surfstudio.standard.ui.screen_modules.FragmentScreenModule
 
 /**
- * Конфигуратор таба новости [HistoryFragmentView]
+ * Конфигуратор таба поиск [SearchFragmentView]
  */
-internal class HistoryScreenConfigurator(arguments: Bundle?) : FragmentScreenConfigurator(arguments) {
+internal class SearchScreenConfigurator(arguments: Bundle?) : FragmentScreenConfigurator(arguments) {
 
     @PerScreen
     @Component(
             dependencies = [ActivityComponent::class],
-            modules = [FragmentScreenModule::class, HistoryScreenModule::class]
+            modules = [FragmentScreenModule::class, SearchScreenModule::class]
     )
-    internal interface HistoryScreenComponent : BindableScreenComponent<HistoryFragmentView>
+    internal interface SearchScreenComponent : BindableScreenComponent<SearchFragmentView>
 
     @Module
-    internal class HistoryScreenModule(route: HistoryFragmentRoute) : CustomScreenModule<HistoryFragmentRoute>(route) {
+    internal class SearchScreenModule(route: SearchFragmentRoute) : CustomScreenModule<SearchFragmentRoute>(route) {
 
         @Provides
         @PerScreen
         fun provideEventHub(
                 screenEventHubDependency: ScreenEventHubDependency
-        )= ScreenEventHub<HistoryEvent>(screenEventHubDependency, HistoryEvent::Lifecycle)
+        ) = ScreenEventHub<SearchEvent>(screenEventHubDependency, SearchEvent::Lifecycle)
 
         @Provides
         @PerScreen
         fun provideBinder(
-          screenBinderDependency: ScreenBinderDependency,
-          eventHub: ScreenEventHub<HistoryEvent>,
-          mw: HistoryMiddleware,
-          sh: HistoryScreenStateHolder,
-          reducer: HistoryReducer
+                screenBinderDependency: ScreenBinderDependency,
+                eventHub: ScreenEventHub<SearchEvent>,
+                mw: SearchMiddleware,
+                sh: SearchScreenStateHolder,
+                reducer: SearchReducer
         ): Any = ScreenBinder(screenBinderDependency).apply {
             bind(eventHub, mw, sh, reducer)
         }
@@ -57,10 +57,10 @@ internal class HistoryScreenConfigurator(arguments: Bundle?) : FragmentScreenCon
             fragmentScreenModule: FragmentScreenModule?,
             args: Bundle?
     ): ScreenComponent<*> {
-        return DaggerHistoryScreenConfigurator_HistoryScreenComponent.builder()
+        return DaggerSearchScreenConfigurator_SearchScreenComponent.builder()
                 .activityComponent(parentComponent)
                 .fragmentScreenModule(fragmentScreenModule)
-                .historyScreenModule(HistoryScreenModule(HistoryFragmentRoute()))
+                .searchScreenModule(SearchScreenModule(SearchFragmentRoute()))
                 .build()
     }
 }

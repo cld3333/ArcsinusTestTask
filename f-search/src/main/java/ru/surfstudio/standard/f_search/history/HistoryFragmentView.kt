@@ -1,4 +1,4 @@
-package ru.surfstudio.standard.f_history
+package ru.surfstudio.standard.f_search.history
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,8 +9,9 @@ import ru.surfstudio.android.core.mvi.impls.event.hub.ScreenEventHub
 import ru.surfstudio.android.core.ui.navigation.feature.route.feature.CrossFeatureFragment
 import ru.surfstudio.android.core.ui.view_binding.viewBinding
 import ru.surfstudio.android.message.MessageController
-import ru.surfstudio.standard.f_history.databinding.FragmentFeedBinding
-import ru.surfstudio.standard.f_history.di.HistoryScreenConfigurator
+import ru.surfstudio.standard.f_search.R
+import ru.surfstudio.standard.f_search.databinding.FragmentHistoryBinding
+import ru.surfstudio.standard.f_search.history.di.HistoryScreenConfigurator
 import ru.surfstudio.standard.ui.mvi.view.BaseMviFragmentView
 import javax.inject.Inject
 
@@ -25,7 +26,7 @@ internal class HistoryFragmentView : BaseMviFragmentView<HistoryState, HistoryEv
     @Inject
     lateinit var messageController: MessageController
 
-    private val binding by viewBinding(FragmentFeedBinding::bind)
+    private val binding by viewBinding(FragmentHistoryBinding::bind)
 
     override fun createConfigurator() = HistoryScreenConfigurator(arguments)
 
@@ -34,7 +35,7 @@ internal class HistoryFragmentView : BaseMviFragmentView<HistoryState, HistoryEv
             container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_feed, container, false)
+        return inflater.inflate(R.layout.fragment_history, container, false)
     }
 
     override fun render(state: HistoryState) {

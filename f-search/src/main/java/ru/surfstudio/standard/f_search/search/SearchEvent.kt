@@ -1,4 +1,4 @@
-package ru.surfstudio.standard.f_search
+package ru.surfstudio.standard.f_search.search
 
 import ru.surfstudio.android.core.mvi.event.Event
 import ru.surfstudio.android.core.mvi.event.RequestEvent

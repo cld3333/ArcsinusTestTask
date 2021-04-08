@@ -1,4 +1,4 @@
-package ru.surfstudio.standard.f_history
+package ru.surfstudio.standard.f_search.history
 
 import ru.surfstudio.android.core.mvi.impls.ui.reactor.BaseReactorDependency
 import ru.surfstudio.android.core.mvi.impls.ui.reducer.BaseReducer
