@@ -1,4 +1,4 @@
-package ru.surfstudio.standard.f_search.history
+package ru.surfstudio.standard.f_characters.history
 
 import io.reactivex.Observable
 import ru.surfstudio.android.core.mvi.impls.ui.middleware.BaseMiddleware
@@ -7,7 +7,7 @@ import ru.surfstudio.android.dagger.scope.PerScreen
 import ru.surfstudio.android.navigation.observer.ScreenResultObserver
 import ru.surfstudio.android.navigation.rx.extension.observeScreenResult
 import ru.surfstudio.android.rx.extension.toObservable
-import ru.surfstudio.standard.f_search.history.HistoryEvent.*
+import ru.surfstudio.standard.f_characters.history.HistoryEvent.*
 import ru.surfstudio.standard.ui.dialog.base.SimpleResult
 import ru.surfstudio.standard.ui.dialog.simple.SimpleDialogRoute
 import ru.surfstudio.standard.ui.mvi.navigation.base.NavigationMiddleware

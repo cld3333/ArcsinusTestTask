@@ -6,5 +6,5 @@ import ru.surfstudio.android.navigation.route.tab.TabHeadRoute
 class SearchFragmentRoute : FragmentRoute(), TabHeadRoute {
 
     override fun getScreenClassPath(): String =
-            "ru.surfstudio.standard.f_search.search.SearchFragmentView"
+            "ru.surfstudio.standard.f_characters.search.SearchFragmentView"
 }

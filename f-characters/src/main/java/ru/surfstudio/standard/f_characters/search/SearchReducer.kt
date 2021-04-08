@@ -1,4 +1,4 @@
-package ru.surfstudio.standard.f_search.search
+package ru.surfstudio.standard.f_characters.search
 
 import ru.surfstudio.android.core.mvi.impls.ui.reactor.BaseReactorDependency
 import ru.surfstudio.android.core.mvi.impls.ui.reducer.BaseReducer
@@ -8,7 +8,7 @@ import ru.surfstudio.android.core.mvp.binding.rx.request.data.RequestUi
 import ru.surfstudio.android.dagger.scope.PerScreen
 import ru.surfstudio.android.utilktx.ktx.text.EMPTY_STRING
 import ru.surfstudio.standard.domain.characters.Character
-import ru.surfstudio.standard.f_search.search.SearchEvent.*
+import ru.surfstudio.standard.f_characters.search.SearchEvent.*
 import ru.surfstudio.standard.ui.mvi.mapper.RequestMappers
 import ru.surfstudio.standard.ui.mvi.pagination.PaginationBundle
 import javax.inject.Inject

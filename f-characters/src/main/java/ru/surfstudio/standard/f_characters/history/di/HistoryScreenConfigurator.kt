@@ -1,4 +1,4 @@
-package ru.surfstudio.standard.f_search.history.di
+package ru.surfstudio.standard.f_characters.history.di
 
 import android.os.Bundle
 import dagger.Component
@@ -11,7 +11,7 @@ import ru.surfstudio.android.core.mvi.impls.ui.binder.ScreenBinderDependency
 import ru.surfstudio.android.core.mvp.configurator.BindableScreenComponent
 import ru.surfstudio.android.core.mvp.configurator.ScreenComponent
 import ru.surfstudio.android.dagger.scope.PerScreen
-import ru.surfstudio.standard.f_search.history.*
+import ru.surfstudio.standard.f_characters.history.*
 import ru.surfstudio.standard.ui.activity.di.ActivityComponent
 import ru.surfstudio.standard.ui.activity.di.FragmentScreenConfigurator
 import ru.surfstudio.standard.ui.navigation.routes.HistoryFragmentRoute

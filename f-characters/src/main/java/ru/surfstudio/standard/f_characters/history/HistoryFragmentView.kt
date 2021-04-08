@@ -1,4 +1,4 @@
-package ru.surfstudio.standard.f_search.history
+package ru.surfstudio.standard.f_characters.history
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,9 +9,9 @@ import ru.surfstudio.android.core.mvi.impls.event.hub.ScreenEventHub
 import ru.surfstudio.android.core.ui.navigation.feature.route.feature.CrossFeatureFragment
 import ru.surfstudio.android.core.ui.view_binding.viewBinding
 import ru.surfstudio.android.message.MessageController
-import ru.surfstudio.standard.f_search.R
-import ru.surfstudio.standard.f_search.databinding.FragmentHistoryBinding
-import ru.surfstudio.standard.f_search.history.di.HistoryScreenConfigurator
+import ru.surfstudio.standard.f_characters.R
+import ru.surfstudio.standard.f_characters.databinding.FragmentHistoryBinding
+import ru.surfstudio.standard.f_characters.history.di.HistoryScreenConfigurator
 import ru.surfstudio.standard.ui.mvi.view.BaseMviFragmentView
 import javax.inject.Inject
 

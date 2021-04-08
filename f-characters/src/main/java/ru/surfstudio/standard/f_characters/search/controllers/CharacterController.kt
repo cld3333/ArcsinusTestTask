@@ -1,4 +1,4 @@
-package ru.surfstudio.standard.f_search.search.controllers
+package ru.surfstudio.standard.f_characters.search.controllers
 
 import android.view.ViewGroup
 import android.widget.ImageView
@@ -7,7 +7,7 @@ import ru.surfstudio.android.easyadapter.controller.BindableItemController
 import ru.surfstudio.android.easyadapter.holder.BindableViewHolder
 import ru.surfstudio.android.imageloader.ImageLoader
 import ru.surfstudio.standard.domain.characters.Character
-import ru.surfstudio.standard.f_search.R
+import ru.surfstudio.standard.f_characters.R
 
 class CharacterController() :
         BindableItemController<Character, CharacterController.Holder>() {

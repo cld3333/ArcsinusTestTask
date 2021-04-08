@@ -1,4 +1,4 @@
-package ru.surfstudio.standard.f_search.search
+package ru.surfstudio.standard.f_characters.search
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,12 +10,12 @@ import ru.surfstudio.android.core.ui.navigation.feature.route.feature.CrossFeatu
 import ru.surfstudio.android.core.ui.view_binding.viewBinding
 import ru.surfstudio.android.easyadapter.ItemList
 import ru.surfstudio.android.easyadapter.pagination.EasyPaginationAdapter
-import ru.surfstudio.standard.f_search.R
-import ru.surfstudio.standard.f_search.search.SearchEvent.CharactersLoad
-import ru.surfstudio.standard.f_search.search.SearchEvent.Input
-import ru.surfstudio.standard.f_search.search.controllers.CharacterController
-import ru.surfstudio.standard.f_search.databinding.FragmentSearchBinding
-import ru.surfstudio.standard.f_search.search.di.SearchScreenConfigurator
+import ru.surfstudio.standard.f_characters.R
+import ru.surfstudio.standard.f_characters.search.SearchEvent.CharactersLoad
+import ru.surfstudio.standard.f_characters.search.SearchEvent.Input
+import ru.surfstudio.standard.f_characters.search.controllers.CharacterController
+import ru.surfstudio.standard.f_characters.databinding.FragmentSearchBinding
+import ru.surfstudio.standard.f_characters.search.di.SearchScreenConfigurator
 import ru.surfstudio.standard.ui.mvi.view.BaseMviFragmentView
 import ru.surfstudio.standard.ui.recylcer.PaginationFooterItemController
 import ru.surfstudio.standard.ui.util.performIfChanged

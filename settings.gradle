@@ -8,7 +8,7 @@ include ":app",
         ":i-network",
         ":f-main",
         ":f-splash",
-        ":f-search",
+        ':f-characters',
         ':i-characters'
 
 apply from: 'android-standard/androidStandardSettings.gradle'

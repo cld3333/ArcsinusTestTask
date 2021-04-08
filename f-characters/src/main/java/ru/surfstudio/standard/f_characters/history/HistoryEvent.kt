@@ -1,4 +1,4 @@
-package ru.surfstudio.standard.f_search.history
+package ru.surfstudio.standard.f_characters.history
 
 import ru.surfstudio.android.core.mvi.event.Event
 import ru.surfstudio.android.core.mvi.event.lifecycle.LifecycleEvent
