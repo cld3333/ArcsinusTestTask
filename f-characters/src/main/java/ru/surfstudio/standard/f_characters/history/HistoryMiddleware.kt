@@ -24,7 +24,7 @@ internal class HistoryMiddleware @Inject constructor(
 
     override fun transform(eventStream: Observable<HistoryEvent>): Observable<out HistoryEvent> = transformations(eventStream) {
         addAll(
-                onCreate() map { ShowCharacters(charactersCache.all) },
+                onResume() map { ShowCharacters(charactersCache.all.sortedBy { it.name }) },
                 Navigation::class decomposeTo navigationMiddleware,
         )
     }
