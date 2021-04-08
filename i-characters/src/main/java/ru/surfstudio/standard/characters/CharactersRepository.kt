@@ -19,10 +19,10 @@ class CharactersRepository @Inject constructor(
 ) : BaseNetworkService() {
 
     fun getCharacters(nameStartsWith: String, offset: Int): Single<DataList<Character>> =
-            authApi.getCharacters(nameStartsWith,offset, DEFAULT_GET_CHARACTERS_LIMIT)
+            authApi.getCharacters(nameStartsWith, offset, DEFAULT_GET_CHARACTERS_LIMIT)
                     .map {
                         DataList(
-                                it.transform(),
+                                it.transform().sortedBy(Character::name),
                                 DEFAULT_GET_CHARACTERS_LIMIT,
                                 it.data.offset,
                                 it.data.total
