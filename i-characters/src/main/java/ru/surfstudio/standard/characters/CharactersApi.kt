@@ -6,9 +6,6 @@ import retrofit2.http.Query
 import ru.surfstudio.standard.characters.response.CharactersResponse
 import ru.surfstudio.standard.i_network.CharactersUrls.GET_CHARACTERS
 
-/**
- * Api для авторизации
- */
 interface CharactersApi {
 
     @GET(GET_CHARACTERS)

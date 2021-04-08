@@ -7,10 +7,6 @@ import ru.surfstudio.standard.domain.characters.Character
 import ru.surfstudio.standard.i_network.service.BaseNetworkService
 import javax.inject.Inject
 
-/**
- * Сервис, отвечающий за авторизацию и регистрацию пользователя
- */
-
 private const val DEFAULT_GET_CHARACTERS_LIMIT = 10
 
 @PerApplication

@@ -9,16 +9,15 @@ import ru.surfstudio.standard.domain.characters.Character
 import ru.surfstudio.standard.i_network.network.BaseNetworkInteractor
 import javax.inject.Inject
 
-/**
- * Интерактор, отвечающий за авторизацию пользователя
- */
 @PerApplication
 @SuppressLint("CheckResult")
 class CharactersInteractor @Inject constructor(
         private val charactersRepository: CharactersRepository,
+        private val charactersCache: CharactersCache,
         connectionQualityProvider: ConnectionProvider,
 ) : BaseNetworkInteractor(connectionQualityProvider) {
 
     fun getCharacters(nameStartsWith: String, offset: Int): Single<DataList<Character>> =
-            charactersRepository.getCharacters(nameStartsWith,offset)
+            charactersRepository.getCharacters(nameStartsWith, offset)
+                    .doOnSuccess(charactersCache::putAll)
 }
