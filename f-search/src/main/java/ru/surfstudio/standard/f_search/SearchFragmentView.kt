@@ -17,6 +17,7 @@ import ru.surfstudio.standard.f_search.databinding.FragmentSearchBinding
 import ru.surfstudio.standard.f_search.di.SearchScreenConfigurator
 import ru.surfstudio.standard.ui.mvi.view.BaseMviFragmentView
 import ru.surfstudio.standard.ui.recylcer.PaginationFooterItemController
+import ru.surfstudio.standard.ui.util.performIfChanged
 import ru.surfstudio.standard.ui.util.setOnTextChanged
 import javax.inject.Inject
 
@@ -56,6 +57,26 @@ internal class SearchFragmentView : BaseMviFragmentView<SearchState, SearchEvent
     }
 
     override fun render(state: SearchState) {
+        renderCharacters(state)
+        renderPlaceholder(state)
+    }
+
+    private fun renderPlaceholder(state: SearchState) {
+        if (state.charactersRequestUi.isLoading) {
+            binding.placeholderContainer.performIfChanged(state.lastSearchQuery) {
+                isVisible = true
+            }
+        } else {
+            binding.placeholderContainer.isVisible = false
+        }
+    }
+
+    override fun initViews() {
+        binding.charactersRv.adapter = easyAdapter
+        binding.serachEt.setOnTextChanged { Input.SearchCharacterEvent(it).emit() }
+    }
+
+    private fun renderCharacters(state: SearchState) {
         state.charactersRequestUi.data?.safeGet { characters, paginationState ->
             val items = if (state.lastSearchQuery.isNotBlank()) {
                 ItemList.create(characters, charactersController)
@@ -64,16 +85,18 @@ internal class SearchFragmentView : BaseMviFragmentView<SearchState, SearchEvent
             }
 
             easyAdapter.setItems(items, paginationState)
-            binding.charactersRv.apply {
-                isVisible = state.lastSearchQuery.isNotBlank()
-                post { scrollToPosition(0) }
+
+
+            binding.charactersRv.performIfChanged(state.lastSearchQuery) {
+                if (state.lastSearchQuery.isBlank() || characters.isEmpty()) {
+                    isVisible = false
+                } else {
+                    post { scrollToPosition(0) }
+                    isVisible = true
+                }
             }
 
+            binding.noCharactersTv.isVisible = characters.isEmpty()
         }
-    }
-
-    override fun initViews() {
-        binding.charactersRv.adapter = easyAdapter
-        binding.serachEt.setOnTextChanged { Input.SearchCharacterEvent(it).emit() }
     }
 }
