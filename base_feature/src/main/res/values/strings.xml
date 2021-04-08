@@ -17,7 +17,7 @@
     <string name="state_error_message">Произошла ошибка</string>
     <string name="state_error_btn">Обновить</string>
 
-    <string name="bottom_bar_history">История</string>
+    <string name="bottom_bar_history">Просмотренные</string>
     <string name="bottom_bar_search">Поиск</string>
     <string name="bottom_bar_profile">Профиль</string>
 </resources>

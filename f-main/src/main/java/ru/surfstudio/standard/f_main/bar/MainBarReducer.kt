@@ -9,7 +9,7 @@ import ru.surfstudio.standard.ui.navigation.routes.MainTabType
 import javax.inject.Inject
 
 internal data class MainBarState(
-        val selectedTab: MainTabType = MainTabType.HISTORY
+        val selectedTab: MainTabType = MainTabType.SEARCH
 )
 
 @PerScreen

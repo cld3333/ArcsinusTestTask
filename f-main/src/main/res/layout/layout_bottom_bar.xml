@@ -8,15 +8,6 @@
     tools:parentTag="android.widget.LinearLayout">
 
     <ru.surfstudio.standard.f_main.view.BottomBarItemView
-        android:id="@+id/bottom_bar_feed_btn"
-        android:layout_width="0px"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:background="?selectableItemBackgroundBorderless"
-        app:item_icon="@drawable/ic_android"
-        app:item_labelText="@string/bottom_bar_history" />
-
-    <ru.surfstudio.standard.f_main.view.BottomBarItemView
         android:id="@+id/bottom_bar_search_btn"
         android:layout_width="0px"
         android:layout_height="match_parent"
@@ -24,4 +15,13 @@
         android:background="?selectableItemBackgroundBorderless"
         app:item_icon="@drawable/ic_android"
         app:item_labelText="@string/bottom_bar_search" />
+
+    <ru.surfstudio.standard.f_main.view.BottomBarItemView
+        android:id="@+id/bottom_bar_feed_btn"
+        android:layout_width="0px"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:background="?selectableItemBackgroundBorderless"
+        app:item_icon="@drawable/ic_android"
+        app:item_labelText="@string/bottom_bar_history" />
 </merge>
