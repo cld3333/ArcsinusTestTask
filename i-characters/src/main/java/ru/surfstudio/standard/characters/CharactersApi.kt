@@ -13,6 +13,7 @@ interface CharactersApi {
 
     @GET(GET_CHARACTERS)
     fun getCharacters(
+            @Query("nameStartsWith") nameStartsWith: String,
             @Query("offset") offset: Int,
             @Query("limit") limit: Int,
     ): Single<CharactersResponse>

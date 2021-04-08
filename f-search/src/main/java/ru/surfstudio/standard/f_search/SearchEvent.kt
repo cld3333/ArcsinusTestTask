@@ -17,7 +17,7 @@ internal sealed class SearchEvent : Event {
 
 
     sealed class Input : SearchEvent() {
-        object BtnClick : Input()
+        class SearchCharacterEvent(val query: String) : Input()
     }
 
     data class GetCharactersRequestEvent(
@@ -25,7 +25,7 @@ internal sealed class SearchEvent : Event {
     ) : RequestEvent<DataList<Character>>, SearchEvent()
 
     sealed class CharactersLoad : SearchEvent() {
-        object FirsLoading : CharactersLoad()
-        object NextPage : CharactersLoad()
+        data class FirsLoading(val searchQuery: String) : CharactersLoad()
+        object LoadMore : CharactersLoad()
     }
 }

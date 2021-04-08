@@ -19,6 +19,6 @@ class CharactersInteractor @Inject constructor(
         connectionQualityProvider: ConnectionProvider,
 ) : BaseNetworkInteractor(connectionQualityProvider) {
 
-    fun getCharacters(offset: Int): Single<DataList<Character>> =
-            charactersRepository.getCharacters(offset)
+    fun getCharacters(nameStartsWith: String, offset: Int): Single<DataList<Character>> =
+            charactersRepository.getCharacters(nameStartsWith,offset)
 }

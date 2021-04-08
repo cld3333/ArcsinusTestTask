@@ -6,6 +6,7 @@ import ru.surfstudio.android.core.mvi.impls.ui.middleware.BaseMiddlewareDependen
 import ru.surfstudio.android.dagger.scope.PerScreen
 import ru.surfstudio.standard.characters.CharactersInteractor
 import ru.surfstudio.standard.f_search.SearchEvent.*
+import ru.surfstudio.standard.f_search.SearchEvent.CharactersLoad.*
 import ru.surfstudio.standard.ui.mvi.navigation.base.NavigationMiddleware
 import javax.inject.Inject
 
@@ -22,20 +23,27 @@ internal class SearchMiddleware @Inject constructor(
     override fun transform(eventStream: Observable<SearchEvent>): Observable<out SearchEvent> = transformations(eventStream) {
         addAll(
                 Navigation::class decomposeTo navigationMiddleware,
-                Input.BtnClick::class mapTo { CharactersLoad.FirsLoading },
-                CharactersLoad::class eventMapTo { getCharactersRequestEvent(it) }
+                Input.SearchCharacterEvent::class mapTo { FirsLoading(it.query) },
+                CharactersLoad::class eventMapTo ::getCharacters
         )
     }
 
-    private fun getCharactersRequestEvent(event: CharactersLoad): Observable<out GetCharactersRequestEvent> {
-        val offset = if (event is CharactersLoad.NextPage) {
-            state.charactersRequestUi.data?.data?.nextOffset
-                    ?: 0
-        } else {
-            0
+    private fun getCharacters(event: CharactersLoad): Observable<out GetCharactersRequestEvent> {
+        var searchQuery = ""
+        var offset = 0
+
+        when (event) {
+            is FirsLoading -> {
+                searchQuery = event.searchQuery
+            }
+            is LoadMore -> {
+                searchQuery = state.lastSearchQuery
+                offset = state.charactersRequestUi.data?.data?.nextOffset
+                        ?: 0
+            }
         }
 
-        return charactersInteractor.getCharacters(offset)
+        return charactersInteractor.getCharacters(searchQuery, offset)
                 .io()
                 .asRequestEvent(::GetCharactersRequestEvent)
     }

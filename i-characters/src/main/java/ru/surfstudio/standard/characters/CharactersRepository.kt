@@ -18,15 +18,15 @@ class CharactersRepository @Inject constructor(
         private val authApi: CharactersApi
 ) : BaseNetworkService() {
 
-    fun getCharacters(offset: Int): Single<DataList<Character>> =
-        authApi.getCharacters(offset, DEFAULT_GET_CHARACTERS_LIMIT)
-                .map {
-                    DataList(
-                            it.transform(),
-                            DEFAULT_GET_CHARACTERS_LIMIT,
-                            it.data.offset,
-                            it.data.total
-                    )
-                }
+    fun getCharacters(nameStartsWith: String, offset: Int): Single<DataList<Character>> =
+            authApi.getCharacters(nameStartsWith,offset, DEFAULT_GET_CHARACTERS_LIMIT)
+                    .map {
+                        DataList(
+                                it.transform(),
+                                DEFAULT_GET_CHARACTERS_LIMIT,
+                                it.data.offset,
+                                it.data.total
+                        )
+                    }
 
 }
