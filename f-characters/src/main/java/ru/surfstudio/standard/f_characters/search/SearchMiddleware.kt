@@ -11,6 +11,8 @@ import ru.surfstudio.standard.f_characters.search.SearchEvent.CharactersLoad.Loa
 import ru.surfstudio.standard.ui.mvi.navigation.base.NavigationMiddleware
 import javax.inject.Inject
 
+const val MIN_SEARCH_QUERY_LENGTH = 3
+
 @PerScreen
 internal class SearchMiddleware @Inject constructor(
         basePresenterDependency: BaseMiddlewareDependency,
@@ -24,10 +26,17 @@ internal class SearchMiddleware @Inject constructor(
     override fun transform(eventStream: Observable<SearchEvent>): Observable<out SearchEvent> = transformations(eventStream) {
         addAll(
                 Navigation::class decomposeTo navigationMiddleware,
-                Input.SearchCharacterEvent::class mapTo { FirsLoading(it.query) },
+                Input.SearchCharacterEvent::class eventMapTo ::onSearch,
                 CharactersLoad::class eventMapTo ::getCharacters
         )
     }
+
+    private fun onSearch(searchCharacterEvent: Input.SearchCharacterEvent) =
+            if (searchCharacterEvent.query.length >= MIN_SEARCH_QUERY_LENGTH) {
+                Observable.just(FirsLoading(searchCharacterEvent.query))
+            } else {
+                Observable.empty()
+            }
 
     private fun getCharacters(event: CharactersLoad): Observable<out GetCharactersRequestEvent> {
         var searchQuery = ""

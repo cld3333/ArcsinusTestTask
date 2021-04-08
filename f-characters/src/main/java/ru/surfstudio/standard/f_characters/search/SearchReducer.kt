@@ -36,7 +36,7 @@ internal class SearchReducer @Inject constructor(
     override fun reduce(state: SearchState, event: SearchEvent): SearchState =
             when (event) {
                 is GetCharactersRequestEvent -> onCharacterLoad(event, state)
-                is CharactersLoad.FirsLoading -> state.copy(lastSearchQuery = event.searchQuery)
+                is Input.SearchCharacterEvent -> state.copy(lastSearchQuery = event.query)
                 else -> state
             }
 

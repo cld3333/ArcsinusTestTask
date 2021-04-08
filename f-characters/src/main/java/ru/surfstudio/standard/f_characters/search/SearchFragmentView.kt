@@ -86,15 +86,15 @@ internal class SearchFragmentView : BaseMviFragmentView<SearchState, SearchEvent
             }
 
             easyAdapter.setItems(items, paginationState)
-
-            binding.charactersRv.performIfChanged(state.lastSearchQuery) {
-                postDelayed({
-                    smoothScrollToPosition(0)
-                }, 700)
-                isVisible = state.lastSearchQuery.isNotBlank() || items.isNotEmpty()
-            }
-
             binding.noCharactersTv.isVisible = characters.isEmpty()
         }
+
+        binding.charactersRv.performIfChanged(state.lastSearchQuery) {
+            postDelayed({
+                smoothScrollToPosition(0)
+            }, 700)
+            isVisible = state.lastSearchQuery.length >= MIN_SEARCH_QUERY_LENGTH
+        }
+
     }
 }
