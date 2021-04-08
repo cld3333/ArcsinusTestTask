@@ -9,10 +9,11 @@ import ru.surfstudio.android.dagger.scope.PerScreen
 import ru.surfstudio.standard.domain.characters.Character
 import ru.surfstudio.standard.f_search.SearchEvent.*
 import ru.surfstudio.standard.ui.mvi.mapper.RequestMappers
+import ru.surfstudio.standard.ui.mvi.pagination.PaginationBundle
 import javax.inject.Inject
 
 internal data class SearchState(
-        val charactersRequestUi: RequestUi<List<Character>> = RequestUi(),
+        val charactersRequestUi: RequestUi<PaginationBundle<Character>> = RequestUi(),
 )
 
 /**
@@ -36,12 +37,12 @@ internal class SearchReducer @Inject constructor(
                 else -> state
             }
 
-    private fun onCharacterLoad(event: GetCharactersRequestEvent, state: SearchState) =
-            state.copy(charactersRequestUi = RequestMapper.builder(event.request, state.charactersRequestUi)
-                    .mapData(RequestMappers.data.default())
-                    .mapLoading(RequestMappers.loading.simple())
-                    .handleError(RequestMappers.error.loadingBased(errorHandler))
-                    .build()
-            )
+    private fun onCharacterLoad(event: GetCharactersRequestEvent, state: SearchState): SearchState =
+        state.copy(charactersRequestUi = RequestMapper.builder(event.request, state.charactersRequestUi)
+                .mapData(RequestMappers.data.pagination())
+                .mapLoading(RequestMappers.loading.simple())
+                .handleError(RequestMappers.error.loadingBased(errorHandler))
+                .build()
+        )
 
 }

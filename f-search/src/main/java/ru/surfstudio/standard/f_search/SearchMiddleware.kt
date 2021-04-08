@@ -13,18 +13,30 @@ import javax.inject.Inject
 internal class SearchMiddleware @Inject constructor(
         basePresenterDependency: BaseMiddlewareDependency,
         private val charactersInteractor: CharactersInteractor,
-        private val navigationMiddleware: NavigationMiddleware
+        private val navigationMiddleware: NavigationMiddleware,
+        private val sh: SearchScreenStateHolder
 ) : BaseMiddleware<SearchEvent>(basePresenterDependency) {
+
+    val state: SearchState get() = sh.value
 
     override fun transform(eventStream: Observable<SearchEvent>): Observable<out SearchEvent> = transformations(eventStream) {
         addAll(
                 Navigation::class decomposeTo navigationMiddleware,
-                Input.BtnClick::class eventMapTo ::getCharactersRequestEvent
+                Input.BtnClick::class mapTo { CharactersLoad.FirsLoading },
+                CharactersLoad::class eventMapTo { getCharactersRequestEvent(it) }
         )
     }
 
-    private fun getCharactersRequestEvent(event: Input.BtnClick) =
-            charactersInteractor.getCharacters()
-                    .io()
-                    .asRequestEvent(::GetCharactersRequestEvent)
+    private fun getCharactersRequestEvent(event: CharactersLoad): Observable<out GetCharactersRequestEvent> {
+        val offset = if (event is CharactersLoad.NextPage) {
+            state.charactersRequestUi.data?.data?.nextOffset
+                    ?: 0
+        } else {
+            0
+        }
+
+        return charactersInteractor.getCharacters(offset)
+                .io()
+                .asRequestEvent(::GetCharactersRequestEvent)
+    }
 }

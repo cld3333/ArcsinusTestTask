@@ -5,6 +5,7 @@ import ru.surfstudio.android.core.mvi.event.RequestEvent
 import ru.surfstudio.android.core.mvi.event.lifecycle.LifecycleEvent
 import ru.surfstudio.android.core.mvp.binding.rx.request.Request
 import ru.surfstudio.android.core.ui.state.LifecycleStage
+import ru.surfstudio.android.datalistlimitoffset.domain.datalist.DataList
 import ru.surfstudio.standard.domain.characters.Character
 import ru.surfstudio.standard.ui.mvi.navigation.event.NavCommandsComposition
 import ru.surfstudio.standard.ui.mvi.navigation.event.NavCommandsEvent
@@ -20,6 +21,11 @@ internal sealed class SearchEvent : Event {
     }
 
     data class GetCharactersRequestEvent(
-            override val request: Request<List<Character>> = Request.Loading(),
-    ) : RequestEvent<List<Character>>, SearchEvent()
+            override val request: Request<DataList<Character>> = Request.Loading(),
+    ) : RequestEvent<DataList<Character>>, SearchEvent()
+
+    sealed class CharactersLoad : SearchEvent() {
+        object FirsLoading : CharactersLoad()
+        object NextPage : CharactersLoad()
+    }
 }

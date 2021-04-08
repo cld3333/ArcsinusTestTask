@@ -4,7 +4,7 @@ import com.google.gson.annotations.SerializedName
 import ru.surfstudio.standard.domain.characters.Character
 import ru.surfstudio.standard.i_network.network.Transformable
 
-private const val DEFAULT_IMAGE_TYPE = "portrait_xlarge."
+private const val DEFAULT_IMAGE_TYPE = "/portrait_xlarge."
 
 data class CharactersResponse(
         @SerializedName("data")
