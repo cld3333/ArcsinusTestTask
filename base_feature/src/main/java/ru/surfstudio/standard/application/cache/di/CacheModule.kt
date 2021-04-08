@@ -4,6 +4,7 @@ import android.content.Context
 import dagger.Module
 import dagger.Provides
 import ru.surfstudio.android.dagger.scope.PerApplication
+import ru.surfstudio.android.filestorage.naming.NamingProcessor
 import ru.surfstudio.android.filestorage.utils.AppDirectoriesProvider
 import ru.surfstudio.standard.i_network.network.BaseUrl
 import ru.surfstudio.standard.i_network.network.cache.SimpleCacheFactory
@@ -16,6 +17,10 @@ import ru.surfstudio.standard.i_network.cache.SimpleCacheInfoStorage
  */
 @Module
 class CacheModule {
+
+    @Provides
+    @PerApplication
+    fun provideNamingProcessor(): NamingProcessor = DefaultNamingProcessor()
 
     @Provides
     @PerApplication

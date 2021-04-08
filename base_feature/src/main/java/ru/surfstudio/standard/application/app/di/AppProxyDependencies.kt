@@ -13,6 +13,7 @@ import ru.surfstudio.android.navigation.provider.ActivityNavigationProvider
 import ru.surfstudio.android.notification.PushHandler
 import ru.surfstudio.android.rx.extension.scheduler.SchedulersProvider
 import ru.surfstudio.android.shared.pref.NO_BACKUP_SHARED_PREF
+import ru.surfstudio.standard.characters.CharactersCache
 import ru.surfstudio.standard.characters.CharactersInteractor
 import ru.surfstudio.standard.i_initialization.InitializeAppInteractor
 import ru.surfstudio.standard.ui.mvi.navigation.IntentChecker
@@ -34,6 +35,7 @@ interface AppProxyDependencies {
     fun intentChecker(): IntentChecker
 
     fun charactersInteractor(): CharactersInteractor
+    fun charactersCache(): CharactersCache
 
     fun commandExecutor(): AppCommandExecutor
     fun activityNavigationProvider(): ActivityNavigationProvider
