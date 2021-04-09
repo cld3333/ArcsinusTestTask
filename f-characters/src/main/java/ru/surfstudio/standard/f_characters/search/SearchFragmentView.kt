@@ -63,6 +63,10 @@ internal class SearchFragmentView : BaseMviFragmentView<SearchState, SearchEvent
         renderPlaceholder(state)
     }
 
+    override fun initViews() {
+        binding.charactersRv.adapter = easyAdapter
+    }
+
     private fun renderPlaceholder(state: SearchState) {
         if (state.charactersRequestUi.isLoading) {
             binding.placeholderContainer.performIfChanged(state.lastSearchQuery) {
@@ -71,10 +75,6 @@ internal class SearchFragmentView : BaseMviFragmentView<SearchState, SearchEvent
         } else {
             binding.placeholderContainer.isVisible = false
         }
-    }
-
-    override fun initViews() {
-        binding.charactersRv.adapter = easyAdapter
     }
 
     private fun renderCharacters(state: SearchState) {
